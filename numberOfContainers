@@ -1,5 +1,5 @@
 #!/bin/bash
-NB_CONTAINERS=(docker ps -a | wc -l)
+NB_CONTAINERS=(`docker ps -a | wc -l`)
 if [ $NB_CONTAINERS -gt 1 ]
 then
   echo "true"
