@@ -17,16 +17,16 @@ pipeline {
 stage('Create a new image') {
            steps {
                echo "CONDITION = ${env.CONDITION}"
-               sh 'docker build -t gomycodeimage:v1 -f Dockerfile .'
-               sh 'docker run -p 3001:3000 gomycodeimage:v1'
+               sh 'docker build -t gomycodeimage:v3 -f Dockerfile .'
+               sh 'docker run -p 3001:3000 gomycodeimage:v3'
            }
        }
  
        stage('Push the image in Docker Hub') {
            steps {
-               sh 'docker login -u "houssem003>" -p "<MyAcct.DhubHMss2022>" docker.io'
-               sh 'docker tag gomycodeimage:v1 houssem003/gomycodeimage:v1'
-               sh 'docker push houssem003/gomycodeimage:v1'
+               sh 'docker login -u "houssem003" -p "MyAcct.DhubHMss2022" docker.io'
+               sh 'docker tag gomycodeimage:v1 houssem003/gomycodeimage:v3'
+               sh 'docker push houssem003/gomycodeimage:v3'
            }
        }
    }
