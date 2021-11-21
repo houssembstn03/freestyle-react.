@@ -14,7 +14,7 @@ pipeline {
                sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=$(docker images -q | head -n 1) --format="{{.ID}}"))'
            }
        }
-tage('Create a new image') {
+stage('Create a new image') {
            steps {
                echo "CONDITION = ${env.CONDITION}"
                sh 'docker build -t <imageName>:<tag> -f Dockerfile .'
